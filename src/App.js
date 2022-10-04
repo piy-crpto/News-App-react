@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import React ,{useState} from 'react'
+import Navbar from './components/Navbar';
+import LoadingBar from 'react-top-loading-bar'
+import News from './components/News';
+const  App =()=> {
+  const pageSize=5;
+ 
+  const[progress,setProgress]=useState(0)
+  
+    return (
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div>
+          <LoadingBar
+          height={5}
+          color='blue'
+          progress={progress}
+          />
+          <Navbar />
+         
+       
+          <News setProgress={setProgress} category="science"  pageSize={pageSize} country="us" />
+         
+          
+        
+          
     </div>
-  );
-}
+      
+    )
+  }
 
-export default App;
+export default App
